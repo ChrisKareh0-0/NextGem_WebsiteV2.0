@@ -1,11 +1,25 @@
-/* Add navigation shadow effect */
+/* Fixed navbar that's always visible at the top of the page */
 nav.header {
+    width: 100%;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it's above other elements */
+    background-color: rgba(5, 5, 5, 0.8); /* Semi-transparent background always visible */
+    backdrop-filter: blur(10px); /* Add blur effect for modern browsers */
+    -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.1); /* Subtle shadow always visible */
 }
 
+/* Enhanced shadow when scrolled */
 nav.header.navShadow {
     box-shadow: 0 4px 30px -5px rgba(0, 0, 0, 0.2);
-    background: rgba(5, 5, 5, 0.9);
+    background: rgba(5, 5, 5, 0.9); /* Slightly darker when scrolled */
 }
 
 /* Smooth scroll behavior */
@@ -22,6 +36,16 @@ body {
     background: #050505;
     scroll-behavior: smooth;
     overflow: auto;
+}
+
+/* Fix for main container to ensure it doesn't hide the footer */
+.main-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    overflow-y: visible;
+    z-index: 1;
 }
 
 /* New Loading Animation Styles */
@@ -113,7 +137,47 @@ body {
     50% { opacity: 1; transform: scale(1); }
 }
 
-nav { width: 100%; padding: 1rem; position: fixed;  z-index: 2;}
+/* Adjust spacing for nav items */
+nav.header .a {
+    display: inline-block;
+    color: #fff;
+    padding: 1rem;
+    margin-right: 4rem;
+    letter-spacing: .4em;
+    font-size: .9em;
+    transition: all 0.3s ease, color 0.3s ease;
+}
+
+/* Last nav item shouldn't have right margin */
+nav.header .a:last-child {
+    margin-right: 0;
+}
+
+/* Responsive adjustments for navbar */
+@media only screen and (max-width: 960px) {
+    nav.header {
+        padding: 0.8rem;
+    }
+    
+    nav.header .a {
+        padding: 0.8rem;
+        margin-right: 2rem;
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    nav.header {
+        padding: 0.5rem;
+    }
+    
+    nav.header .a {
+        padding: 10px;
+        margin-right: 0.5rem;
+        letter-spacing: 0.3em;
+        font-size: 0.7em;
+    }
+}
 
 span {
 	display: inline-block;
@@ -269,64 +333,66 @@ nav.header .a:hover ~ .cursor {
     text-align: center;
     width: 100%;
     display: flex;
-    height: 120vh;
+    height: 100vh;
     align-content: center;
-    justify-content: flex-end;
+    justify-content: flex-end !important; /* Position content at bottom */
     align-items: center;
     flex-direction: column;
-
     -moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	position: relative;
-	z-index: 1;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    z-index: 1;
     background: linear-gradient(0deg, rgba(5,5,5,1) 20%, rgba(5,5,5,0) 50%);
-
+    padding-bottom: 100px !important; /* Add padding at bottom */
 }
 
-.first>h2 {
+.first > h2 {
     font-size: 1em;
-    line-height: 0;
+    line-height: 1.5;
     font-weight: 100;
     letter-spacing: .25em;
     font-style: italic;
-    margin: 35px;
+    margin: 25px 0;
 }
-.first>h1{
-    margin: 10px 0;
+
+.first > h1 {
+    margin: 15px 0 40px 0 !important; /* Increase bottom margin */
     font-weight: 100;
-
     letter-spacing: 0.4em;
-
 }
 
-.first>h1:after {
-    content: "";
-    position: absolute;
-    margin-top: 105px;
-    left: calc(50% - 25px);
-    width: 50px;
-    height: 2px;
-    background: #ffffff70;
-}
-
-.first>p{
+.first > p {
     font-size: 13px;
     letter-spacing: 0px;
     font-family: sans-serif;
     width: 700px;
     line-height: 28px;
     font-weight: lighter;
-    margin-top: 50px;
-    margin-bottom: 220px;
+    margin-top: 60px !important; /* Increase top margin */
+    margin-bottom: 80px !important; /* Adjust bottom margin */
     color: #c9c9c996;
-    opacity: 0;
-    transition: all 3.9s ease-in-out ;
+    opacity: 1;
+    transition: all 3.9s ease-in-out;
+    max-width: 90%;
 }
 
-.first>p.ended{
-    opacity: 1;
+.first > p.ended,
+.first > p {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.first > h1:after {
+    content: "";
+    position: absolute;
+    margin-top: 120px !important; /* Increase distance from text */
+    left: calc(50% - 25px);
+    width: 50px;
+    height: 2px;
+    background: #ffffff70;
 }
 
 .second {
@@ -443,12 +509,17 @@ nav.header .a:hover ~ .cursor {
     color: #898989;
 }
 
+/* Footer fixes */
 .footer {
     width: 100%;
     background: #141414;
     padding: 40px 0;
     color: #898989;
     border-top: 1px solid #2a2a2a;
+    position: relative;
+    z-index: 10;
+    display: block;
+    clear: both;
 }
 
 .footer-content {
@@ -459,7 +530,7 @@ nav.header .a:hover ~ .cursor {
 
 .contact-info {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 30px;
 }
@@ -467,41 +538,28 @@ nav.header .a:hover ~ .cursor {
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    transition: color 0.3s ease;
-}
-
-.contact-item:hover {
-    color: #ffffff;
+    margin-bottom: 10px;
 }
 
 .contact-item i {
-    font-size: 20px;
-    width: 24px;
-    text-align: center;
-}
-
-.contact-item span {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
+    margin-right: 10px;
+    color: #ff6600;
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid #2a2a2a;
-    font-size: 12px;
 }
 
 .footer-bottom a {
-    color: #898989;
+    color: #ff6600;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-bottom a:hover {
-    color: #ffffff;
+    color: #ff8533;
 }
 
 @media only screen and (max-width: 768px) {
@@ -516,12 +574,13 @@ nav.header .a:hover ~ .cursor {
     }
 }
 
+/* Fix for main container to ensure it doesn't hide the footer */
 .main-container {
     position: relative;
     width: 100%;
     min-height: 100vh;
     height: auto;
-    overflow-y: auto;
+    overflow-y: visible;
     z-index: 1;
 }
 
@@ -543,9 +602,14 @@ nav.header .a:hover ~ .cursor {
     text-align: center;
     transition: transform 0.3s ease;
     padding: 1rem;
-    border-radius: 10px;
     margin-right: -200px;
     position: relative;
+    background-color: transparent;
+    /* Add min dimensions for debugging */
+    min-width: 150px;
+    min-height: 150px;
+    /* Add border for debugging */
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .image-wrapper:last-child {
@@ -557,19 +621,40 @@ nav.header .a:hover ~ .cursor {
     z-index: 4;
 }
 
-.pillar-image {
-    width: 100%;
-    height: 300px;
-    object-fit: contain;
-    border-radius: 10px;
-    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
-    display: block;
+/* Add fallback content for images that fail to load */
+.image-wrapper::after {
+    content: attr(data-alt);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    display: none;
 }
 
-.image-wrapper h3 {
-    margin-top: 1rem;
-    font-size: 1.2em;
-    color: #fff;
+/* .pillar-image:not([src]), 
+.pillar-image[src=""], 
+.pillar-image[src="undefined"] {
+    display: none;
+} */
+
+/* .pillar-image:not([src]) + .image-wrapper::after,
+.pillar-image[src=""] + .image-wrapper::after,
+.pillar-image[src="undefined"] + .image-wrapper::after {
+    display: block;
+} */
+
+/* Fix for pillar images */
+.pillar-image {
+    /* width: 100%;
+    height: 300px;
+    object-fit: contain;
+    display: block;
+    opacity: 1;
+    background-color: transparent; */
+    /* Add border for debugging */
+    /* border: 1px dashed rgba(255, 255, 255, 0.2); */
 }
 
 /* Media query for mobile responsiveness */
@@ -911,4 +996,1066 @@ nav.header .a:hover ~ .cursor {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Services Section - Full Width Fix */
+.services {
+    background-color: #0a0a0a;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(40, 40, 40, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(40, 40, 40, 0.2) 0%, transparent 40%);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 100px 0;
+}
+
+.services-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 5%;
+    text-align: center;
+}
+
+.services-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    letter-spacing: 0.2em;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.service-card {
+    background: rgba(20, 20, 20, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    padding: 40px 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.service-card:hover {
+    /* Remove transition to allow animation to take over */
+    transition: none;
+    /* Apply animation directly */
+    animation: float 3s ease-in-out infinite !important;
+    box-shadow: 0 15px 35px 0 rgba(255, 102, 0, 0.2);
+    border: 1px solid rgba(255, 102, 0, 0.2);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to bottom, rgba(255, 102, 0, 0.1), transparent);
+    transition: height 0.4s ease;
+    z-index: 0;
+}
+
+.service-card:hover::before {
+    height: 100%;
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: #ff6600;
+    margin-bottom: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: block;
+}
+
+.service-card:hover i {
+    /* Remove transition to allow animation to take over */
+    transition: none;
+    /* Apply animation directly */
+    animation: floatIcon 2s ease-in-out infinite !important;
+    color: #ff8533;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    transition: transform 0.7s ease;
+    z-index: 0;
+}
+
+.service-card:hover::after {
+    transform: rotate(30deg) translate(10%, 10%);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.service-card p {
+    color: #c9c9c9;
+    line-height: 1.6;
+    transition: opacity 0.3s ease;
+    margin-bottom: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.service-card:hover p {
+    color: #e0e0e0;
+}
+
+/* Portfolio Section */
+.portfolio {
+    background-color: #050505;
+    padding: 100px 0;
+    width: 100%;
+    height: auto;
+}
+
+.portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.portfolio-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    letter-spacing: 0.2em;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    height: 300px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    transition: bottom 0.3s ease;
+}
+
+.portfolio-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-placeholder {
+    transform: scale(1.1);
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    bottom: 0;
+}
+
+.portfolio-overlay h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.portfolio-overlay p {
+    color: #c9c9c9;
+}
+
+/* Contact Section */
+.contact {
+    background-color: #0a0a0a;
+    padding: 100px 0;
+    width: 100%;
+    height: auto;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.contact-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 0.2em;
+}
+
+.contact-container p {
+    color: #c9c9c9;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff6600;
+}
+
+.submit-btn {
+    background: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.submit-btn:hover {
+    background: #ff8533;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    .services-grid,
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-container h2,
+    .portfolio-container h2,
+    .contact-container h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 102, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
+    }
+}
+
+/* Add a separate animation for icons */
+@keyframes floatIcon {
+    0% {
+        transform: translateY(-8px) scale(1.1);
+    }
+    50% {
+        transform: translateY(-12px) scale(1.15);
+    }
+    100% {
+        transform: translateY(-8px) scale(1.1);
+    }
+}
+
+/* Animated elements */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-fadeInLeft {
+    animation: fadeInLeft 0.8s ease forwards;
+}
+
+.animate-fadeInRight {
+    animation: fadeInRight 0.8s ease forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.8s ease forwards;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+    animation: glow 3s ease-in-out infinite;
+}
+
+/* Enhanced section animations */
+.services-container h2,
+.portfolio-container h2,
+.contact-container h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.services-container h2::after,
+.portfolio-container h2::after,
+.contact-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #ff6600;
+    transform: translateX(-50%);
+    transition: width 0.8s ease;
+}
+
+.services-container h2.animate-active::after,
+.portfolio-container h2.animate-active::after,
+.contact-container h2.animate-active::after {
+    width: 100px;
+}
+
+/* Enhanced service cards */
+.service-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease,
+                background-color 0.4s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to bottom, rgba(255, 102, 0, 0.1), transparent);
+    transition: height 0.4s ease;
+    z-index: 0;
+}
+
+.service-card:hover::before {
+    height: 100%;
+}
+
+.service-card i, 
+.service-card h3, 
+.service-card p {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-card:hover i {
+    transform: translateY(-5px) scale(1.1);
+    color: #ff8533;
+}
+
+.service-card:hover h3 {
+    transform: translateY(-3px);
+}
+
+/* Enhanced portfolio items */
+.portfolio-item {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-item:hover::after {
+    opacity: 1;
+}
+
+.portfolio-overlay {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                opacity 0.5s ease,
+                bottom 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Enhanced form elements */
+.form-group input,
+.form-group textarea {
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn {
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+/* Navigation animation enhancements */
+nav.header .a {
+    position: relative;
+    overflow: hidden;
+}
+
+nav.header .a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ff6600;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav.header .a:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+nav.header .a.active::before {
+    width: 100%;
+    left: 0;
+    background-color: #fff;
+}
+
+/* Success message animation */
+.success-message {
+    animation: scaleIn 0.5s ease forwards;
+}
+
+.success-message i {
+    font-size: 3rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    animation: float 2s ease-in-out infinite;
+}
+
+/* Floating animation for service cards */
+@keyframes float {
+    0% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Card content wrapper */
+.card-content {
+    position: relative;
+    z-index: 1;
+    margin-top: 50px;
+}
+
+/* Add specific class for JavaScript hover detection */
+.card-hovered {
+    animation: float 3s ease-in-out infinite !important;
+    box-shadow: 0 15px 35px 0 rgba(255, 102, 0, 0.2) !important;
+    border: 1px solid rgba(255, 102, 0, 0.2) !important;
+}
+
+.card-hovered i {
+    animation: floatIcon 2s ease-in-out infinite !important;
+    color: #ff8533 !important;
+}
+
+/* Ensure animations work in all browsers */
+@-webkit-keyframes float {
+    0% { -webkit-transform: translateY(-15px); transform: translateY(-15px); }
+    50% { -webkit-transform: translateY(-25px); transform: translateY(-25px); }
+    100% { -webkit-transform: translateY(-15px); transform: translateY(-15px); }
+}
+
+@-webkit-keyframes floatIcon {
+    0% { -webkit-transform: translateY(-8px) scale(1.1); transform: translateY(-8px) scale(1.1); }
+    50% { -webkit-transform: translateY(-12px) scale(1.15); transform: translateY(-12px) scale(1.15); }
+    100% { -webkit-transform: translateY(-8px) scale(1.1); transform: translateY(-8px) scale(1.1); }
+}
+
+/* ===== CLEAN RESET OF ANIMATIONS ===== */
+
+/* Reset animations for all elements */
+* {
+    animation: none;
+}
+
+/* ===== IMPROVED IMAGE HANDLING ===== */
+
+/* Clean pillar image styling */
+.pillar-image {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image-wrapper {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    margin-right: -200px;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible;
+}
+
+.image-wrapper:hover .pillar-image {
+    transform: scale(1.1) translateY(-10px);
+    filter: drop-shadow(0 10px 20px rgba(255, 102, 0, 0.3));
+}
+
+/* ===== ENHANCED ANIMATIONS ===== */
+
+/* Smooth page transitions */
+.page-transition {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Improved service card animations */
+.service-card {
+    background: rgba(20, 20, 20, 0.7);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    padding: 40px 30px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+.service-card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 102, 0, 0.3);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: #ff6600;
+    margin-bottom: 20px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 1;
+}
+
+.service-card:hover i {
+    transform: translateY(-10px);
+    color: #ff8533;
+}
+
+/* Add a glow effect to service cards */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 102, 0, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.service-card:hover::after {
+    opacity: 1;
+}
+
+/* ===== ENHANCED PORTFOLIO ITEMS ===== */
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-top: 2px solid #ff6600;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    bottom: 0;
+}
+
+/* ===== ENHANCED CURSOR EFFECT ===== */
+
+.cursor {
+    pointer-events: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+    z-index: 9999;
+}
+
+.cursor.hover {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 102, 0, 0.5);
+}
+
+/* ===== ENHANCED SCROLL ANIMATIONS ===== */
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== ENHANCED BUTTON EFFECTS ===== */
+
+.submit-btn, 
+button, 
+.a {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.submit-btn::before, 
+button::before, 
+.a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.submit-btn:hover, 
+button:hover, 
+.a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover::before, 
+button:hover::before, 
+.a:hover::before {
+    left: 100%;
+}
+
+/* ===== ENHANCED SECTION TRANSITIONS ===== */
+
+.section {
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, rgba(5, 5, 5, 1), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ===== NEW PARTICLE BACKGROUND EFFECT ===== */
+
+.particles-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background-color: rgba(255, 102, 0, 0.2);
+    border-radius: 50%;
+    animation: float-particle 15s infinite linear;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
+/* ===== NEW TEXT ANIMATION EFFECTS ===== */
+
+.animated-text {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.animated-text span {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: text-reveal 0.5s forwards;
+}
+
+@keyframes text-reveal {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== NEW HOVER EFFECTS FOR NAVIGATION ===== */
+
+nav.header .a {
+    position: relative;
+    overflow: hidden;
+}
+
+nav.header .a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ff6600;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav.header .a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* ===== NEW LOADING ANIMATION ===== */
+
+.loading-text span {
+    display: inline-block;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Stagger the animation for each letter */
+.loading-text span:nth-child(1) { animation-delay: 0.1s; }
+.loading-text span:nth-child(2) { animation-delay: 0.2s; }
+.loading-text span:nth-child(3) { animation-delay: 0.3s; }
+.loading-text span:nth-child(4) { animation-delay: 0.4s; }
+.loading-text span:nth-child(5) { animation-delay: 0.5s; }
+.loading-text span:nth-child(6) { animation-delay: 0.6s; }
+.loading-text span:nth-child(7) { animation-delay: 0.7s; }
+
+/* DIRECT FIX FOR TEXT ISSUES */
+#discover-text {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
+    font-size: 1.2em !important;
+    margin-bottom: 20px !important;
+    font-weight: 300 !important;
+    text-transform: none !important;
+    font-style: italic !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+#nextgem-text {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
+    font-size: 3em !important;
+    letter-spacing: 0.2em !important;
+    word-spacing: 0.5em !important;
+    font-weight: 400 !important;
+    margin: 20px 0 !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+/* Force text visibility */
+.first > h2, 
+.first > h1, 
+.first > p {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* position: relative !important; */
+    z-index: 100 !important;
+    /* padding-bottom: 20px; */
+    
+}
+
+/* Ensure proper spacing */
+.first > h1 {
+    letter-spacing: 0.2em !important;
+    word-spacing: 0.5em !important;
+}
+
+/* Remove any animations that might be interfering */
+.first > h2, 
+.first > h1, 
+.first > p {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Fix spacing in all H2 elements */
+h2 {
+    letter-spacing: normal !important; /* Reset any letter-spacing that might be compressing text */
+    word-spacing: normal !important; /* Ensure normal word spacing */
+    white-space: normal !important; /* Allow normal text wrapping */
+    text-transform: none !important; /* Prevent text transformation issues */
+}
+
+/* Section title specific styling */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    position: relative;
+    text-align: center;
+    letter-spacing: 0.05em !important;
+    word-spacing: 0.1em !important;
+}
+
+/* Fix for "The Pillars of Marketing" specifically */
+.second-container h2 {
+    letter-spacing: 0.05em !important;
+    word-spacing: 0.1em !important;
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+/* Remove any animations that might be interfering with text display */
+h2 {
+    animation: none !important;
+    transition: none !important;
 }

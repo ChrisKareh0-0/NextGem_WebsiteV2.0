@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Threejs Graces - By Anderson Mancini</title>
+        <title>NextGem</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <meta name="description" content="A threejs graces renderer example using threejs boilerplate - by Anderson Mancini">
+        <meta name="description" content="">
 
-        <meta property="og:url" content="https://threejs-graces.tiiny.site/">
+        <meta property="og:url" content="">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Threejs Graces - By Anderson Mancini">
-        <meta property="og:description" content="A threejs graces renderer example using threejs boilerplate - by Anderson Mancini">
+        <meta property="og:title" content="">
+        <meta property="og:description" content="">
         <meta property="og:image" content="../static/textures/imageSocial.jpg">
 
         <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:domain" content="threejs-graces.tiiny.site/">
-        <meta property="twitter:url" content="https://threejs-graces.tiiny.site/">
-        <meta name="twitter:title" content="Threejs Graces - By Anderson Mancini">
-        <meta name="twitter:description" content="A threejs graces renderer example using threejs boilerplate - by Anderson Mancini">
+        <meta property="twitter:domain" content="">
+        <meta property="twitter:url" content="">
+        <meta name="twitter:title" content="">
+        <meta name="twitter:description" content="">
         <meta name="twitter:image" content="../static/textures/imageSocial.jpg">
 
         <!-- <meta name="keywords" content="ThreeJS, HTML, CSS, JavaScript"> -->
@@ -31,152 +31,150 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Josefin+Sans&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
         
-        <body>
-            <div class="loading-container">
-                <div class="loading-circle">
-                    <div class="loading-circle-inner"></div>
+    <body>
+        <div class="loading-container">
+            <div class="loading-circle">
+                <div class="loading-circle-inner"></div>
+            </div>
+            <div class="loading-text">
+                <span>L</span>
+                <span>O</span>
+                <span>A</span>
+                <span>D</span>
+                <span>I</span>
+                <span>N</span>
+                <span>G</span>
+            </div>
+        </div>
+        <div class="main-container" style="visibility:hidden;">
+            <nav class="header">
+                <a href="#first" class="a active"><span>HOME</span></a>
+                <a href="#second" class="a"><span>INTRODUCTION</span></a>
+                <a href="#services" class="a"><span>SERVICES</span></a>
+                <a href="#portfolio" class="a"><span>PORTFOLIO</span></a>
+                <a href="#contact" class="a"><span>CONTACT</span></a>
+                <div class="cursor"></div>
+            </nav>
+            
+            <div id="first" class="first">
+                <h2 id="discover-text">Discover</h2>
+                <!-- <h1 id="nextgem-text">THE&nbsp;&nbsp;&nbsp;NEXTGEM</h1> -->
+                <p class="ended">Distills insight into brilliance, shaping campaigns as timeless as fine jewels</p>
+            </div>
+
+            <div id="second" class="section second">
+                <div class="second-container">
+                    <h2>The Pillars of Marketing</h2>
+                    <ul>
+                        <li id="aglaea" class="active">Targeting</li>
+                        <li id="thalia"><a>Measurment</a></li>
+                        <li id="euphre">Engagement</li>
+                    </ul>
+                    <p id="content">By showing ads only to the right people, your business spends less to get more sales, so every marketing dollar works harder.</p>
                 </div>
-                <div class="loading-text">
-                    <span>L</span>
-                    <span>O</span>
-                    <span>A</span>
-                    <span>D</span>
-                    <span>I</span>
-                    <span>N</span>
-                    <span>G</span>
+                
+                <div class="images-container">
+                    <div class="image-wrapper">
+                        <img src="../static/Pillar.png" alt="Targeting" class="pillar-image">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="../static/Pillar.png" alt="Measurement" class="pillar-image">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="../static/Pillar.png" alt="Engagement" class="pillar-image">
+                    </div>
+                </div>
+                
+                <div id="canvas-container-details"></div>
+            </div>
+
+            <div id="services" class="section services">
+                <div class="services-container">
+                    <h2 class="section-title">Our Services</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="card-content">
+                                <i class="fas fa-bullseye"></i>
+                                <h3>Strategic Marketing</h3>
+                                <p>Data-driven strategies that align with your business goals and target audience needs.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="card-content">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Digital Advertising</h3>
+                                <p>Precision campaigns across search, social, and display networks to maximize ROI.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="card-content">
+                                <i class="fas fa-paint-brush"></i>
+                                <h3>Creative Design</h3>
+                                <p>Eye-catching visuals and compelling content that elevate your brand identity.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="card-content">
+                                <i class="fas fa-code"></i>
+                                <h3>Web Development</h3>
+                                <p>Custom websites and applications that deliver seamless user experiences.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="main-container" style="visibility:hidden;">
-                <nav class="header">
-                    <a href="#first" class="a"><span>HOME</span></a>
-                    <a href="#second" class="a"><span>INTRODUCTION</span></a>
-                    <a href="#services" class="a"><span>SERVICES</span></a>
-                    <a href="#portfolio" class="a"><span>PORTFOLIO</span></a>
-                    <a href="#contact" class="a"><span>CONTACT</span></a>
-                    <div class="cursor"></div>
-                </nav>
-                
-                <div id="first" class="first">
-                    <h2>Discover</h2>
-                    <h1>THE NEXTGEM</h1>
-                    <p>Distills insight into brilliance, shaping campaigns as timeless as fine jewels</p>
-                </div>
 
-                <div id="second" class="section second">
-                    <div class="second-container">
-                        <h2>The Pillars of Marketing</h2>
-                        <ul>
-                            <li id="aglaea" class="active">Targeting</li>
-                            <li id="thalia"><a>Measurment</a></li>
-                            <li id="euphre">Engagement</li>
-                        </ul>
-                        <p id="content">By showing ads only to the right people, your business spends less to get more sales, so every marketing dollar works harder.</p>
-                    </div>
-                    
-                    <div class="images-container">
-                        <div class="image-wrapper">
-                            <img src="../static/Pillar.png" alt="Targeting" class="pillar-image">
-                            <!-- <h3>Targeting</h3> -->
-                        </div>
-                        <div class="image-wrapper">
-                            <img src="../static/Pillar.png" alt="Measurement" class="pillar-image">
-                            <!-- <h3>Measurement</h3> -->
-                        </div>
-                        <div class="image-wrapper">
-                            <img src="../static/Pillar.png" alt="Engagement" class="pillar-image">
-                            <!-- <h3>Engagement</h3> -->
+                <div id="portfolio" class="section portfolio">
+                    <div class="portfolio-container">
+                        <h2 class="section-title">Our Work</h2>
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item">
+                                <div class="portfolio-placeholder" style="background-color: #333;"></div>
+                                <div class="portfolio-overlay">
+                                    <h3>Brand Transformation</h3>
+                                    <p>Complete rebrand for a financial services company</p>
+                                </div>
+                            </div>
+                            <div class="portfolio-item">
+                                <div class="portfolio-placeholder" style="background-color: #444;"></div>
+                                <div class="portfolio-overlay">
+                                    <h3>Digital Campaign</h3>
+                                    <p>Multi-channel marketing for product launch</p>
+                                </div>
+                            </div>
+                            <div class="portfolio-item">
+                                <div class="portfolio-placeholder" style="background-color: #555;"></div>
+                                <div class="portfolio-overlay">
+                                    <h3>E-commerce Growth</h3>
+                                    <p>200% revenue increase through optimization</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div id="canvas-container-details"></div>
                 </div>
 
-                <div id="third" class="section third">
-                    <div class="third-container">
-                        <h2>What we can do for you</h2>
+                <div id="contact" class="section contact">
+                    <div class="contact-container">
+                        <h2 class="section-title">Get In Touch</h2>
+                        <p>Ready to transform your marketing strategy? Get in touch with our team.</p>
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Tell us about your project" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
                     </div>
-                    <canvas id="canvas"></canvas>
-                    <textarea id="codeEditor" class="editor" spellcheck="false" autocorrect="off" autocapitalize="off" translate="no" oninput="render()"></textarea>
-                    <pre id="error"></pre>
-                    <div id="indicator"></div>
-                    <!-- <div id="controls">
-                        <div class="controls">
-                            <input id="btnToggleView" class="icon" type="checkbox" name="toggleView" onclick="toggleView()">
-                            <input id="btnToggleResolution" class="icon" type="checkbox" name="toggleResolution" onchange="toggleResolution()">
-                            <input id="btnReset" class="icon" type="checkbox" name="reset" onclick="reset()">
-                        </div>
-                    </div> -->
-                    <script type="x-shader/x-fragment">#version 300 es
-
-
-precision highp float;
-out vec4 O;
-uniform vec2 resolution;
-uniform float time;
-uniform sampler2D pebbles;
-#define FC gl_FragCoord.xy
-#define T time
-#define R resolution
-#define MN min(R.x,R.y)
-// Returns a pseudo random number for a given point (white noise)
-float rnd(vec2 p) {
-  p=fract(p*vec2(12.9898,78.233));
-  p+=dot(p,p+34.56);
-  return fract(p.x*p.y);
-}
-// Returns a pseudo random number for a given point (value noise)
-float noise(in vec2 p) {
-  vec2 i=floor(p), f=fract(p), u=f*f*(3.-2.*f);
-  float
-  a=rnd(i),
-  b=rnd(i+vec2(1,0)),
-  c=rnd(i+vec2(0,1)),
-  d=rnd(i+1.);
-  return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);
-}
-// Returns a pseudo random number for a given point (fractal noise)
-float fbm(vec2 p) {
-  float t=.0, a=1.; mat2 m=mat2(1.,-.5,.2,1.2);
-  for (int i=0; i<5; i++) {
-    t+=a*noise(p);
-    p*=2.*m;
-    a*=.5;
-  }
-  return t;
-}
-float clouds(vec2 p) {
-	float d=1., t=.0;
-	for (float i=.0; i<3.; i++) {
-		float a=d*fbm(i*10.+p.x*.2+.2*(1.+i)*p.y+d+i*i+p);
-		t=mix(t,d,a);
-		d=a;
-		p*=2./(i+1.);
-	}
-	return t;
-}
-void main(void) {
-	vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
-	vec3 col=vec3(0);
-	float bg=clouds(vec2(st.x+T*.5,-st.y));
-	uv*=1.-.3*(sin(T*.2)*.5+.5);
-	for (float i=1.; i<12.; i++) {
-		uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
-		vec2 p=uv;
-		float d=length(p);
-		col+=.00125/d*(cos(sin(i)*vec3(1,2,3))+1.);
-		float b=noise(i+p+bg*1.731);
-		col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
-		col=mix(col,vec3(bg*.25,bg*.137,bg*.05),d);
-	}
-	O=vec4(col,1);
-}</script>
                 </div>
-                
 
-                
                 <div id="canvas-container" class="fixed"></div> 
-                <!-- <h4 class="footer">Created by Anderson Mancini based on <a href="https://dribbble.com/shots/6767548-The-Three-Graces-Concept" target="_blank">Tom Bogner Design</a>. <a href="https://sketchfab.com/3d-models/3d-printable-the-three-graces-58e0ae19e2984b86883edc41bf43415a" target="_blank">Free model credits</a></h4> -->
             </div>
             <script src="shader.js"></script>
             <footer class="footer">
@@ -184,21 +182,56 @@ void main(void) {
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+1 (555) 123-4567</span>
+                            <span>+96170420420</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Marketing Street, Digital City, DC 12345</span>
+                            <span>Zalka, Building 690</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>contact@nextgem.com</span>
+                            <span>creative@nextgem.agency</span>
                         </div>
                     </div>
                     <div class="footer-bottom">
-                        <p>Created by Anderson Mancini based on <a href="https://dribbble.com/shots/6767548-The-Three-Graces-Concept" target="_blank">Tom Bogner Design</a>. <a href="https://sketchfab.com/3d-models/3d-printable-the-three-graces-58e0ae19e2984b86883edc41bf43415a" target="_blank">Free model credits</a></p>
                     </div>
                 </div>
             </footer>
     </body>
 </html>
+<script>
+    // Add this script at the end of the body
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if images are loading
+        const pillarImages = document.querySelectorAll('.pillar-image');
+        
+        pillarImages.forEach(img => {
+            // Set data-alt attribute for fallback
+            img.parentElement.setAttribute('data-alt', img.alt || 'Image not loaded');
+            
+            // Log image load status
+            img.onload = function() {
+                console.log('Image loaded successfully:', img.src);
+            };
+            
+            img.onerror = function() {
+                console.error('Failed to load image:', img.src);
+                // Try alternative path
+                const newSrc = img.src.replace('static/', '../static/').replace('./static/', 'static/');
+                if (newSrc !== img.src) {
+                    console.log('Trying alternative path:', newSrc);
+                    img.src = newSrc;
+                }
+            };
+            
+            // Force reload if already cached
+            if (img.complete) {
+                if (img.naturalHeight === 0) {
+                    img.onerror();
+                } else {
+                    img.onload();
+                }
+            }
+        });
+    });
+</script>

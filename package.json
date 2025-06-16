@@ -1,7 +1,7 @@
 {
   "repository": "#",
   "license": "UNLICENSED",
-  "author": "Anderson Mancini <andersonmancini30@gmail.com> (https://twitter.com/Andersonmancini)",
+  "author": "",
   "scripts": {
     "build": "webpack --config ./bundler/webpack.prod.js",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider webpack serve --config ./bundler/webpack.dev.js"
